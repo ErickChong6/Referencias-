@@ -1,0 +1,379 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Pixelta';
+    src: url(Pixelta\ \(1\).ttf);
+}
+
+:root {
+    --fuente: 'Pixelta';
+}
+
+body {
+    font-family: var(--fuente);
+    color: var(--texto);
+    background: url(../img/fondos/Iniciar.png);
+    min-height: 100vh;
+}
+
+/* ---------- Pantalla principal ---------- */
+.login {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.titulo {
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.perfiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.perfil {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    width: 280px;
+    padding: 20px 12px;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    transition: transform .2s, background .2s;
+}
+
+.perfil:hover,
+.perfil:focus-visible {
+    transform: translateY(-6px);
+
+    /* outline: none; */
+}
+
+.perfil .nombre {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-top: 16px;
+    word-break: break-word;
+    color: #fff;
+}
+
+.perfil .dato {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #d89cf0;
+}
+
+.avatar {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 8px solid var(--rosa-borde);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.avatar .c {
+    position: absolute;
+    font-style: normal;
+    color: var(--rojo);
+    font-size: 1.8rem;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(200, 40, 70, .3);
+    pointer-events: none;
+}
+
+.c1 {
+    top: -8px;
+    left: 6px;
+    transform: rotate(-20deg);
+}
+
+.c2 {
+    top: 26px;
+    left: -20px;
+    transform: rotate(-35deg);
+    font-size: 1.4rem;
+}
+
+.c3 {
+    top: -10px;
+    right: 4px;
+    transform: rotate(18deg);
+}
+
+.c4 {
+    bottom: 8px;
+    right: -16px;
+    transform: rotate(25deg);
+    font-size: 1.5rem;
+}
+
+.c5 {
+    bottom: -10px;
+    left: 18px;
+    transform: rotate(-10deg);
+    font-size: 1.3rem;
+}
+
+/* Avatar pequeño (para el selector) */
+.avatar.chico {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-width: 4px;
+}
+
+
+.avatar.chico .c {
+    display: none;
+}
+
+/* Tarjeta "crear perfil" */
+.avatar-nuevo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px dashed var(--rosa);
+    display: grid;
+    place-items: center;
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--rosa);
+    transition: background .2s;
+    color: #fff;
+}
+
+.nuevo:hover .avatar-nuevo {
+    background: #fff;
+}
+
+/* ---------- Ventanas ---------- */
+dialog.modal {
+    border: none;
+    border-radius: 28px;
+    padding: 32px 28px;
+    width: min(92vw, 420px);
+    margin: auto;
+    text-align: center;
+    font-family: var(--fuente);
+    color: var(--texto);
+    box-shadow: 0 20px 60px rgba(133, 67, 232, 0.25);
+}
+
+dialog.modal::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+}
+
+.modal h2 {
+    font-weight: 800;
+    font-size: 1.9rem;
+    margin: 14px 0 20px;
+}
+
+.modal .avatar {
+    margin: 10px auto 0;
+}
+
+.campo {
+    display: block;
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.campo input {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 12px 18px;
+    font: inherit;
+    font-weight: 600;
+    border: 3px solid var(--rosa-borde);
+    border-radius: 999px;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.campo input:focus {
+    border-color: var(--rojo);
+}
+
+.selector-avatares {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: -4px 0 18px;
+}
+
+.opcion-avatar {
+    background: none;
+    /* border: 1px solid transparent; */
+    /* border-radius: 50%; */
+    padding: 2px;
+    cursor: pointer;
+    transition: transform .15s, border-color .15s;
+}
+
+.opcion-avatar:hover {
+    transform: scale(1.08);
+}
+
+.opcion-avatar.elegido {
+    border-color: var(--rojo);
+}
+
+.aviso {
+    background: var(--rosa-claro);
+    border-radius: 16px;
+    padding: 12px 14px;
+    font-weight: 700;
+    font-size: .95rem;
+    margin-bottom: 14px;
+}
+
+.error {
+    color: var(--rojo);
+    font-weight: 700;
+    min-height: 1.4em;
+    margin-bottom: 10px;
+}
+
+.texto-aviso {
+    font-weight: 700;
+}
+
+.pass-grande {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--rojo);
+    margin: 4px 0 16px;
+    word-break: break-all;
+}
+
+/* ---------- Botones ---------- */
+.botones {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    font: inherit;
+    font-weight: 800;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.btn-principal {
+    background: var(--rojo);
+    color: #22032e;
+    box-shadow: 0 6px 0 var(--rojo-oscuro);
+}
+
+.btn-principal:hover {
+    transform: translateY(-2px);
+}
+
+.btn-principal:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--rojo-oscuro);
+}
+
+.btn-secundario {
+    background: var(--rosa-claro);
+    color: var(--texto);
+}
+
+.btn-secundario:hover {
+    background: var(--rosa-borde);
+}
+
+.btn-borrar {
+    margin-top: 20px;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: .9rem;
+    color: #999;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-borrar.confirmar {
+    color: var(--rojo);
+    font-weight: 800;
+}
+
+/* ---------- Animaciones ---------- */
+.corazon-grande {
+    font-size: 4rem;
+    color: var(--rojo);
+    line-height: 1;
+    animation: latido 1s infinite;
+}
+
+@keyframes latido {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.temblar {
+    animation: temblar .4s;
+}
+
+@keyframes temblar {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-8px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(8px);
+    }
+}

@@ -1,0 +1,87 @@
+body {
+    background-image: url(../img/boton/11.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+@font-face {
+    font-family: 'Pixelta';
+    src: url(Pixelta\ \(1\).ttf);
+}
+
+h1 {
+    font-family: 'Pixelta';
+    color: #16131a;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 1px 1px 2px #947fbb, 0 0 1em #FFF, 0 0 0.2em #947fbb;
+}
+
+#niveles123 img {
+    width: 300px;
+}
+
+#niveles45 img {
+    width: 300px;
+}
+
+#botonRegresar img {
+    width: 250px;
+}
+
+#niveles123 {
+    text-align: center;
+}
+
+#niveles45 {
+    text-align: center;
+}
+
+#botonRegresar {
+    text-align: center;
+}
+
+
+.ventana-contrasena {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.contrasena-caja {
+    background: #251723;
+    border: 5px solid #000;
+    box-shadow: 0px 9px 12px 3px;
+    padding: 24px 32px;
+    text-align: center;
+    font-family: 'Pixelta';
+    font-size: 20px;
+    color: #947fbb;
+}
+
+#input-contrasena {
+    font-size: 20px;
+    padding: 6px 10px;
+    margin: 12px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contrasena-mensaje {
+    color: #e3262f;
+    min-height: 1.2em;
+}
+
+.contrasena-caja button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin: 6px;
+    cursor: pointer;
+    font-family: 'Pixelta';
+}

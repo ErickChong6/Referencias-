@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 1</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
+    <!--  CARRERA  -->
+    <div id="cuerpoNivel">
+        <div id="contenedor">
+            <div class="suelo"></div>
+
+            <div class="gato gato-corriendo"></div>
+
+            <div class="score">Puntuación: 0</div>
+
+            <div class="game-over">¡Prepárate para continuar!</div>
+
+            <div class="aviso-checkpoint">
+                <p>¡Alerta has entrado en zona peligrosa!</p>
+                <p class="aviso-texto">Resuelve el problema antes de que se acabe el tiempo e intenta salir con vida.
+                </p>
+                <button type="button" class="btn-ir-problema">Resolver problema</button>
+            </div>
+        </div>
+
+        <div id="nivelBoton">
+            <a href="../niveles.html">Volver</a>
+        </div>
+
+        <footer>
+            <div id="problemasResueltos">
+                <p>0</p>
+            </div>
+            <div id="usuario">Sin usuario</div>
+        </footer>
+    </div>
+
+    <!--  PROBLEMA  -->
+    <div class="problema">
+        <h1 class="p-titulo">...</h1>
+        <p class="p-tiempo">Tiempo restante: 45:00 minutos</p>
+        <p>Resuelve el siguiente problema de manera correcta al terminar presiona envíar y espera a ser recompensado o
+            castigado.</p>
+        <p>Si los números rectangulares se repiten ingresa también la fila donde comienza la repetición.</p>
+
+        <table class="p-tabla" id="tablaMix">
+            <tr id="encabezado"></tr>
+        </table>
+
+        <p>Conclusión:
+            <select id="p-conclusion">
+                <option value="">-- elige --</option>
+                <option value="Los números rectangulares son aceptados">Los números rectangulares son aceptados</option>
+                <option value="Los números rectangulares se rechazan">Los números rectangulares se rechazan</option>
+            </select>
+        </p>
+
+        <button type="button" onclick="InsertarFila()">Insertar fila</button>
+        <button type="button" onclick="QuitarFila()">Quitar fila</button>
+        <button type="button" class="btn-enviar">Enviar</button>
+        <p class="p-vidas" id="p-vidas"></p>
+        <button type="button" onclick="AbrirFormulas()">Fórmulas</button>
+        <p class="p-mensaje"></p>
+    </div>
+    <!-- aquí termina .problema -->
+
+    <!--  FÓRMULAS  -->
+    <div class="ventana-formulas">
+        <div class="formulas-caja">
+            <button type="button" class="formulas-cerrar" onclick="CerrarFormulas()">X</button>
+            <img class="formulas-img" src="" alt="Fórmula">
+            <div class="formulas-controles">
+                <button type="button" onclick="CambiarFormula(-1)">◀</button>
+                <span class="formulas-contador">1 / 2</span>
+                <button type="button" onclick="CambiarFormula(1)">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!--  REVIVIR  -->
+    <div class="pantalla-revivir">
+        <p>¡Oh, no! ¡Has perdido todas tus vidas!</p>
+        <p class="revivir-texto">¿Deseas revivir?</p>
+        <button type="button" class="btn-revivir" onclick="AbrirMinijuego()">Revivir</button>
+        <button type="button" onclick="IrAlMenu()">Menú</button>
+    </div>
+
+    <!--Imagen final y dehistorias (inicio)-->
+    <div class="pantalla-historia">
+        <img class="historia-img" src="" alt="Historia">
+        <div class="historia-controles">
+            <button type="button" onclick="CambiarDiapositiva(-1)">◀</button>
+            <span class="historia-contador">1 / 8</span>
+            <button type="button" class="btn-historia-sig" onclick="CambiarDiapositiva(1)">▶</button>
+        </div>
+        <button type="button" onclick="TerminarHistoria()">Saltar</button>
+    </div>
+
+    <!--Imagen final-->
+    <div class="nivel-completado">
+        <p>¡Nivel 1 completado!</p>
+        <p>Obtuviste:</p>
+        <img class="ingrediente-img" src="./img/ingrediente.png" alt="Herbaceus">
+        <p class="ingrediente-nombre">Herbaceus</p>
+        <a href="../niveles.html">Niveles</a>
+    </div>
+
+    <!--  MINI-JUEGO: SOPA DE LETRAS  -->
+    <div class="minijuego">
+        <h2 id="minijuegoTitulo" class="p-titulo">Minijuego</h2>
+        <p id="minijuegoTiempo" class="mj-intentos p-tiempo">Tiempo restante: 5:00</p>
+
+         <!-- Panel 1: Sopa de letras -->
+        <div id="mjSopa" class="mj-panel">
+            <div id="sopaCuadricula"></div>
+            <div id="sopaLista"></div>
+        </div>
+
+        <!-- Panel 2: Cuestionario de 3 preguntas (3 intentos c/u) -->
+        <div id="mjCuestionario3" class="mj-panel mj-cuestionario">
+            <p class="mj-num-pregunta"></p>
+            <p class="mj-pregunta"></p> </br>
+            <div class="mj-opciones"></div> </br>
+            <p class="mj-intentos"></p>
+            <p class="mj-mensaje"></p>
+        </div>
+    </div>
+
+    <script src="../js/perfiles.js"></script>
+    <script src="./js/sopa.js"></script>
+    <script src="./js/cuestionario.js"></script>
+    <script src="./js/problemas.js"></script>
+    <script src="./js/nivel.js"></script></body>
+</html>

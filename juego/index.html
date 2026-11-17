@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/estilosIndex.css">
+</head>
+
+<body>
+    <h1>#Miau</h1>
+    <div>
+        <div id="imagen">
+            <a href="niveles.html"><img src="img/boton/1.svg"></a>
+            <a href="login.html"><img src="img/boton/2.svg"></a>
+        </div>
+    </div>
+
+    <div id="usuarioActual">
+        <p>Usuario actual: </p>
+    </div>
+
+    <footer>
+        <img src="img/gato/Black-Run.png">
+    </footer>
+
+    <script src="js/perfiles.js"></script>
+    <script>
+        const jugador = perfilActivo();
+        document.querySelector("#usuarioActual p").textContent =
+            "Usuario actual: " + (jugador ? jugador.nombre : "nadie");
+    </script>
+
+</body>
+
+</html>

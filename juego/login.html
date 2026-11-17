@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quién va a jugar?</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <main class="login">
+        <h1 class="titulo">¿Quién va a jugar?</h1>
+        <section id="lista-perfiles" class="perfiles"></section>
+    </main>
+
+    <!--  Ventana: entrar a un perfil -->
+    <dialog id="modal-entrar" class="modal">
+        <form id="form-entrar" autocomplete="off">
+            <div id="entrar-avatar"></div>
+            <h2 id="entrar-nombre"></h2>
+
+            <label class="campo">
+                Contraseña
+                <input type="password" id="entrar-pass" placeholder="Escribe tu contraseña">
+            </label>
+            <p id="entrar-error" class="error"></p>
+
+            <div class="botones">
+                <button type="button" class="btn btn-secundario" data-cerrar>Cancelar</button>
+                <button type="submit" class="btn btn-principal">Entrar</button>
+            </div>
+
+            <button type="button" id="btn-borrar" class="btn-borrar">Borrar este perfil</button>
+        </form>
+    </dialog>
+
+    <!--  Ventana: crear perfil  -->
+    <dialog id="modal-crear" class="modal">
+        <form id="form-crear" autocomplete="off">
+            <h2>Nuevo perfil</h2>
+
+            <label class="campo">
+                Tu nombre
+                <input type="text" id="crear-nombre" maxlength="12" placeholder="Ej. Monica">
+            </label>
+
+            <p class="campo">Elige tu foto</p>
+            <div id="selector-avatares" class="selector-avatares"></div>
+
+            <label class="campo">
+                Contraseña
+                <input type="password" id="crear-pass" placeholder="Mínimo 4 caracteres">
+            </label>
+            <label class="campo">
+                Repite la contraseña
+                <input type="password" id="crear-pass2" placeholder="Otra vez, por si acaso">
+            </label>
+
+            <p class="aviso">Anota tu contraseña ya que no se puede recuperar.</p>
+            <p id="crear-error" class="error"></p>
+
+            <div class="botones">
+                <button type="button" class="btn btn-secundario" data-cerrar>Cancelar</button>
+                <button type="submit" class="btn btn-principal">Crear</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!--  Ventana: perfil creado  -->
+    <dialog id="modal-aviso" class="modal">
+        <h2>¡Listo, <span id="aviso-nombre"></span>!</h2>
+        <p class="texto-aviso">Tu contraseña es:</p>
+        <p id="aviso-pass" class="pass-grande"></p>
+        <p class="aviso">Anota tu contraseña ya que no se puede recuperar.</p>
+        <div class="botones">
+            <button type="button" class="btn btn-principal" data-cerrar>¡Entendido!</button>
+        </div>
+    </dialog>
+
+    <script src="js/perfiles.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

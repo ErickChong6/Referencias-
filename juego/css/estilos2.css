@@ -1,0 +1,780 @@
+@font-face {
+    font-family: 'Pixelta';
+    src: url(../fuentes/Pixelta.ttf);
+}
+
+@font-face {
+    font-family: 'Gameboi';
+    src: url(../fuentes/Gameboi95.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*historia*/
+.pantalla-historia {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 18;
+    background: #000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.historia-img {
+    max-width: 90vw;
+    max-height: 75vh;
+    border: 5px solid #fff;
+}
+
+.historia-controles {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    font-family: 'Pixelta';
+}
+
+.pantalla-historia button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 18px;
+    font-family: 'Pixelta';
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#contenedor {
+    width: 1200px;
+    height: 480px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url(../img/fondos/halloween_set_bg.gif);
+    overflow: hidden;
+}
+
+.gato {
+    width: 84px;
+    height: 84px;
+    position: absolute;
+    bottom: 22px;
+    left: 42px;
+    z-index: 2;
+    background: url(../img/gato/Black-Run.png) no-repeat;
+    background-size: 504px 84px;
+    /* 84 × 6 = 504 */
+    image-rendering: pixelated;
+}
+
+.gato-corriendo {
+    animation: animarGato 0.45s steps(6) infinite;
+}
+
+@keyframes animarGato {
+    from {
+        background-position-x: 0;
+    }
+
+    to {
+        background-position-x: -504px;
+    }
+
+    /* el mismo 504 */
+}
+
+.gato-estrellado {
+    background-position-x: -252px;
+}
+
+.suelo {
+    width: 200%;
+    height: 42px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(../img/suelo.png) repeat-x 0px 0px;
+    background-size: 50% 42px;
+}
+
+.score {
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    z-index: 10;
+    color: #fcfcfc;
+    font-family: 'Pixelta';
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.caldero {
+    width: 100px;
+    height: 75px;
+    position: absolute;
+    bottom: 17px;
+    left: 600px;
+    z-index: 1;
+    background: url(../img/obstaculos/halloween_set_pumpkin.gif) no-repeat;
+    background-size: 80px;
+}
+
+#cuerpoNivel {
+    padding-left: 1.25em;
+}
+
+#nivelBoton a {
+    text-decoration: none;
+    background-color: #fcfcfc;
+    padding: 12px;
+    color: #000;
+    border-radius: 20px 40px;
+}
+
+#nivelBoton {
+    padding-top: 28px;
+    text-align: center;
+    font-family: 'Pixelta';
+    padding-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.nube {
+    width: 92px;
+    height: 26px;
+
+    position: absolute;
+    z-index: 0;
+
+    background: url(../img/nube.png) no-repeat;
+    background-size: 92px 26px;
+}
+
+#nivelBoton a:hover {
+    text-decoration: none;
+    background-color: #000;
+    padding: 12px;
+    color: #fff;
+    border-radius: 20px 40px;
+    border: 1px solid #fff;
+}
+
+#usuario {
+    background-color: #fff;
+    color: #000;
+    padding: 12px;
+    min-width: 70px;
+    text-align: center;
+}
+
+#problemasResueltos {
+    background-color: #fff;
+    color: #000;
+    padding: 12px;
+    min-width: 70px;
+    text-align: center;
+}
+
+footer {
+    color: #fff;
+    font-family: 'Pixelta';
+    display: flex;
+    justify-content: space-between;
+}
+
+.problema {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: #f1f1f1;
+    z-index: 10;
+    padding: 20px;
+    text-align: center;
+    overflow-y: scroll;
+    scrollbar-color: deeppink #222;
+    scrollbar-width: thin;
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background: #fff;
+    border: 4px solid #000;
+    padding: 10px 20px;
+    font-weight: 800;
+}
+
+.aviso-checkpoint {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    background: #fff;
+    border: 5px solid #000;
+    box-shadow: 12px 12px 0 #7a7a7a;
+    /* la sombra gris de tus mockups */
+    padding: 24px 40px;
+    text-align: center;
+    font-family: 'Pixelta';
+}
+
+.aviso-checkpoint p {
+    font-family: 'Pixelta';
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.aviso-checkpoint .aviso-texto {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.btn-ir-problema {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Pixelta';
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/*diseño pagina problemas*/
+.p-titulo {
+    font-family: 'Pixelta';
+    font-size: 60px;
+    color: #24001f;
+
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(151, 25, 201), 0 0 0.2em rgb(251, 249, 184);
+}
+
+
+.p-tabla {
+    padding-left: 13em;
+    padding-top: 22px;
+    font-family: 'Gameboi';
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+p {
+    font-family: 'Gameboi';
+}
+
+.btn-add {
+    text-decoration: none;
+    padding: 12px;
+    color: #fff;
+    border-radius: 20px 40px;
+    font-family: 'Pixelta';
+    font-size: 20px;
+    background: #24001f;
+    background: radial-gradient(circle, rgba(36, 0, 31, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(200, 0, 255, 1) 100%);
+}
+
+.btn-enviar {
+    text-decoration: none;
+    background-color: #fcfcfc;
+    padding: 12px;
+    color: #000;
+    border-radius: 20px 40px;
+    font-family: 'Pixelta';
+    font-size: 20px;
+}
+
+.p-tiempo {
+    font-size: 30px;
+    margin: 12px 0;
+    font-family: 'Pixelta';
+}
+
+.p-tiempo.alerta {
+    color: #e3262f;
+    font-weight: bold;
+}
+
+
+#p-vidas img {
+    width: 50px;
+}
+
+/*diseño botones formula*/
+.ventana-formulas {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.formulas-caja {
+    position: relative;
+    background: #fff;
+    border: 5px solid #000;
+    box-shadow: 12px 12px 0 #7a7a7a;
+    padding: 16px;
+    max-width: 90vw;
+}
+
+.formulas-img {
+    display: block;
+    max-width: 85vw;
+    max-height: 75vh;
+}
+
+.formulas-cerrar {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+}
+
+.formulas-controles {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+/* ===== Pantallas que tapan todo (revivir y mini-juego) ===== */
+.pantalla-revivir,
+.minijuego {
+    display: none;
+    /* escondidas hasta que JS las muestre */
+    position: fixed;
+    /* las saca de la fila del body y las pega a la pantalla */
+    inset: 0;
+    /* top, right, bottom y left en 0 = ocupa toda la pantalla */
+    z-index: 15;
+    /* encima de .problema (10), debajo de las fórmulas (20) */
+    background: #100011;
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto;
+    /* scroll si no cabe */
+}
+
+.pantalla-revivir p {
+    font-family: 'Pixelta';
+    font-size: 64px;
+    margin-bottom: 16px;
+    color: #f4f5aa;
+}
+
+.pantalla-revivir button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    margin: 8px;
+    font-family: 'Pixelta';
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/*  Sopa de letras  */
+#sopaCuadricula {
+    display: grid;
+    /* el número de columnas lo pone sopa.js */
+    gap: 2px;
+    width: max-content;
+    margin: 16px auto;
+    color: #fff;
+
+}
+
+.minijuego h2,
+p {
+    color: #f1e2ff;
+}
+
+#sopaCuadricula div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gameboi';
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    color: #dda0dd;
+}
+
+#sopaCuadricula div.selected {
+    background: #ffd84d;
+}
+
+#sopaCuadricula div.found {
+    background: #000;
+    color: #fff;
+}
+
+#sopaLista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    font-family: 'Gameboi';
+    color: #fff;
+}
+
+#sopaLista div.found {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.nivel-completado {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 16;
+    background: #f1f1f1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Pixelta';
+    font-size: 28px;
+}
+
+.ingrediente-img {
+    width: 70%;
+    image-rendering: pixelated;
+}
+
+/*ESTETICA DE LAS PANTALLAS DEL JUEGO AQUÍ ES LA MISMA PARA LOS DEMAS*/
+
+.problema {
+    --lila: #d4aaf5;
+    --lila-claro: #f1e2ff;
+    --morado: #7b2cbf;
+    --morado-oscuro: #3c096c;
+    --casi-negro: #10002b;
+    --campo: #1d0333;
+
+    background: radial-gradient(circle at top, #2a0845 0%, #10002b 55%, #000 100%);
+    color: var(--lila-claro);
+    scrollbar-color: var(--morado) var(--casi-negro);
+}
+
+.problema,
+.problema * {
+    font-family: 'Pixelta', monospace;
+}
+
+.problema .p-titulo {
+    color: var(--lila-claro);
+    font-size: 29px;
+    margin: 10px 0 6px;
+    text-shadow: 4px 4px 0 var(--morado-oscuro), 0 0 18px var(--morado);
+}
+
+/* ----- Tiempo ----- */
+.problema .p-tiempo {
+    display: inline-block;
+    background: var(--casi-negro);
+    color: var(--lila);
+    border: 4px solid var(--lila);
+    box-shadow: 6px 6px 0 var(--morado);
+    padding: 6px 20px;
+    font-size: 26px;
+    margin: 10px 0 20px;
+}
+
+.problema .p-tiempo.alerta {
+    color: #ff5c8a;
+    border-color: #ff5c8a;
+    box-shadow: 6px 6px 0 #6b0f2e;
+    animation: parpadeo 1s steps(2) infinite;
+}
+
+@keyframes parpadeo {
+    50% {
+        opacity: .5;
+    }
+}
+
+.problema>p {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.4;
+    max-width: 900px;
+    margin: 0 auto 6px;
+}
+
+/* ----- Tabla ----- */
+.problema .p-tabla {
+    margin: 24px auto;
+    padding: 14px;
+    border-collapse: separate;
+    border-spacing: 6px;
+    background: var(--casi-negro);
+    border: 1px solid var(--lila);
+    box-shadow: 10px 10px 0 var(--morado-oscuro);
+}
+
+.problema .p-tabla th,
+.problema .p-tabla td {
+    color: var(--lila);
+    font-size: 22px;
+    padding: 2px 4px;
+}
+
+/* fila de títulos: n, Xn, a·Xn + c ... */
+.problema #encabezado th,
+.problema #encabezado td {
+    background: var(--morado-oscuro);
+    color: var(--lila-claro);
+    padding: 8px 14px;
+}
+
+.problema .p-tabla input {
+    width: 170px;
+    background: var(--campo);
+    color: var(--lila-claro);
+    border: 3px solid var(--morado);
+    border-radius: 0;
+    padding: 6px 10px;
+    font-size: 20px;
+    outline: none;
+}
+
+.problema .p-tabla input::placeholder {
+    color: #8a6aa8;
+}
+
+.problema .p-tabla input:focus {
+    border-color: var(--lila);
+    box-shadow: 0 0 0 3px rgba(212, 170, 245, .3);
+}
+
+.problema .p-tabla td.ok input {
+
+    color: #fff;
+}
+
+.problema .p-tabla td.mal input {
+    border-color: #ffb3b8;
+    color: #fff;
+}
+
+.problema #p-conclusion {
+    background: var(--campo);
+    color: var(--lila-claro);
+    border: 3px solid var(--morado);
+    border-radius: 0;
+    padding: 6px 10px;
+    margin-left: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.problema #p-conclusion option {
+    background: var(--casi-negro);
+}
+
+.problema button {
+    background: var(--morado-oscuro);
+    color: var(--lila-claro);
+    border: 3px solid var(--lila);
+    border-radius: 0;
+    padding: 8px 18px;
+    margin: 16px 6px 8px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #000;
+    transition: background .15s;
+}
+
+.problema button:hover {
+    background: var(--morado);
+}
+
+.problema button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+/* Enviar resalta más que los demás */
+.problema .btn-enviar {
+    background: var(--lila);
+    color: var(--casi-negro);
+    border-color: var(--lila-claro);
+    font-size: 24px;
+    padding: 10px 32px;
+    box-shadow: 4px 4px 0 var(--morado);
+}
+
+.problema .btn-enviar:hover {
+    background: var(--lila-claro);
+}
+
+/* ----- Vidas y mensaje ----- */
+.problema #p-vidas {
+    margin: 10px auto 0;
+}
+
+.problema #p-vidas img {
+    width: 50px;
+    margin: 0 4px;
+    image-rendering: pixelated;
+    filter: drop-shadow(3px 3px 0 #000);
+}
+
+.problema .p-mensaje {
+    color: var(--lila);
+    font-size: 22px;
+    min-height: 1.5em;
+    margin-top: 10px;
+}
+
+.campo {
+    display: block;
+    margin: 10px 0;
+    font-family: 'Gameboi';
+    font-size: 20px;
+}
+
+.problema .p-tabla input,
+.problema .campo input {
+    width: 170px;
+    background: var(--campo);
+    color: var(--lila-claro);
+    border: 3px solid var(--morado);
+    border-radius: 0;
+    padding: 6px 10px;
+    font-size: 20px;
+    outline: none;
+}
+
+.problema .p-tabla input:focus,
+.problema .campo input:focus {
+    border-color: var(--lila);
+    box-shadow: 0 0 0 3px rgba(212, 170, 245, .3);
+}
+
+.tabla-numeros {
+    margin: 10px auto;
+    border-spacing: 6px;
+}
+
+.tabla-numeros td {
+    background: var(--casi-negro);
+    color: var(--lila-claro);
+    border: 2px solid var(--morado);
+    padding: 6px 12px;
+    font-size: 20px;
+}
+
+/* ===================== MINI-JUEGOS NIVEL 2 ===================== */
+.juego-mini {
+    display: none;
+    /* el JS muestra el que toque */
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.minijuego h2,
+.minijuego p {
+    color: #f1e2ff;
+    font-family: 'Pixelta', monospace;
+}
+
+.mini-tiempo {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.mini-pista {
+    font-size: 20px;
+    margin: 12px 0;
+}
+
+.mini-palabra {
+    font-size: 44px;
+    letter-spacing: 6px;
+    margin: 18px 0;
+    color: #d4aaf5 !important;
+}
+
+.mini-mensaje {
+    min-height: 1.4em;
+    font-size: 22px;
+}
+
+/* teclado del ahorcado */
+#ahorcadoTeclado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 16px 0;
+}
+
+#ahorcadoTeclado button,
+#revuelta button {
+    min-width: 44px;
+    padding: 8px 10px;
+    font-family: 'Pixelta', monospace;
+    font-size: 20px;
+    background: #3c096c;
+    color: #f1e2ff;
+    border: 3px solid #d4aaf5;
+    cursor: pointer;
+}
+
+#ahorcadoTeclado button.acierto {
+    background: #1f9d55;
+    border-color: #1f9d55;
+}
+
+#ahorcadoTeclado button.fallo {
+    background: #4a0d14;
+    border-color: #e3262f;
+    opacity: .6;
+}
+
+#revueltaInput {
+    font-family: 'Pixelta', monospace;
+    font-size: 26px;
+    padding: 8px 12px;
+    margin: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: #1d0333;
+    color: #f1e2ff;
+    border: 3px solid #7b2cbf;
+}

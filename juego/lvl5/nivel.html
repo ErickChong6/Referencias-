@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 5</title>
+    <link rel="stylesheet" href="../css/estilos2.css">
+</head>
+
+<body>
+    <!--  CARRERA  -->
+    <div id="cuerpoNivel">
+        <div id="contenedor">
+            <div class="suelo"></div>
+
+            <div class="gato gato-corriendo"></div>
+
+            <div class="score">Puntuación: 0</div>
+
+            <div class="game-over">¡Prepárate para continuar!</div>
+
+            <div class="aviso-checkpoint">
+                <p>¡Alerta has entrado en zona peligrosa!</p>
+                <p class="aviso-texto">Resuelve el problema antes de que se acabe el tiempo e intenta salir con vida.
+                </p>
+                <button type="button" class="btn-ir-problema">Resolver problema</button>
+            </div>
+        </div>
+
+        <div id="nivelBoton">
+            <a href="../niveles.html">Volver</a>
+        </div>
+
+        <footer>
+            <div id="problemasResueltos">
+                <p>0</p>
+            </div>
+            <div id="usuario">Sin usuario</div>
+        </footer>
+    </div>
+
+    <!--  PROBLEMA  -->
+    <div class="problema">
+        <h1 class="p-titulo">...</h1>
+        <p class="p-tiempo">Tiempo restante: 45:00 minutos</p>
+        <div id="p-numeros"></div>
+        <p id="textoProblema"></p>
+        <div id="zona-respuestas"></div>
+        <div class="botones-tabla">
+            <button type="button" class="btn-add" onclick="InsertarFila()">Insertar fila</button>
+            <button type="button" class="btn-add" onclick="QuitarFila()">Quitar fila</button>
+        </div>
+
+        <button type="button" class="btn-enviar">Enviar</button>
+        <p class="p-vidas" id="p-vidas"></p>
+        <button type="button" onclick="AbrirFormulas()">Fórmulas</button>
+        <p class="p-mensaje"></p>
+    </div>
+    <!-- aquí termina .problema -->
+
+    <!--  FÓRMULAS  -->
+    <div class="ventana-formulas">
+        <div class="formulas-caja">
+            <button type="button" class="formulas-cerrar" onclick="CerrarFormulas()">X</button>
+            <img class="formulas-img" src="" alt="Fórmula">
+            <div class="formulas-controles">
+                <button type="button" onclick="CambiarFormula(-1)">◀</button>
+                <span class="formulas-contador">1 / 2</span>
+                <button type="button" onclick="CambiarFormula(1)">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!--  REVIVIR  -->
+    <div class="pantalla-revivir">
+        <p>¡Oh, no! ¡Has perdido todas tus vidas!</p>
+        <p class="revivir-texto">¿Deseas revivir?</p>
+        <button type="button" class="btn-revivir" onclick="AbrirMinijuego()">Revivir</button>
+        <button type="button" onclick="IrAlMenu()">Menú</button>
+    </div>
+
+    <!--Imagen final y dehistorias (inicio)-->
+    <div class="pantalla-historia">
+        <img class="historia-img" src="" alt="Historia">
+        <div class="historia-controles">
+            <button type="button" onclick="CambiarDiapositiva(-1)">◀</button>
+            <span class="historia-contador">1 / 8</span>
+            <button type="button" class="btn-historia-sig" onclick="CambiarDiapositiva(1)">▶</button>
+        </div>
+        <button type="button" onclick="TerminarHistoria()">Saltar</button>
+    </div>
+
+    <!--Imagen final-->
+    <div class="nivel-completado">
+        <p>¡Nivel 5 completado!</p>
+        <!-- TODO: que se hace una vez que se gana el juego??? -->
+        <!-- <p>Obtuviste:</p> -->
+        <!-- <img class="ingrediente-img" src="img/nivel1/ingrediente.png" alt="Mandrágora"> -->
+        <!-- <p class="ingrediente-nombre">Herbaceus</p> -->
+        <a href="../niveles.html">Niveles</a>
+    </div>
+
+    <!--  MINI-JUEGO: SOPA DE LETRAS  -->
+    <div class="minijuego">
+        <h2>Sopa de letras: generación de números rectangulares</h2>
+        <p id="sopaTiempo">Tiempo restante: 5:00</p>
+        <div id="sopaCuadricula"></div>
+        <div id="sopaLista"></div>
+    </div>
+
+    <script src="../js/perfiles"></script>
+    <script src="./js/minijuegos.js"></script>
+    <script src="./js/problemas.js"></script>
+    <!-- TODO: hacer script de nivel -->
+    <!-- <script src="./js/nivel.js"></script> -->
+</body>
+
+</html>

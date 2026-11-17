@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveles</title>
+    <link rel="stylesheet" href="css/estilosNiveles.css">
+</head>
+
+<body>
+    <h1>Niveles</h1>
+
+    <div id="niveles123">
+        <a href="./lvl1/nivel.html" class="btn-nivel" data-nivel="1"><img src="img/boton/nivel1c.svg" alt="Nivel 1"></a>
+        <a href="./lvl2/nivel.html" class="btn-nivel" data-nivel="2"><img src="img/boton/nivel2.svg" alt="Nivel 2"></a>
+        <a href="./lvl3/nivel.html" class="btn-nivel" data-nivel="3"><img src="img/boton/nivel3.svg" alt="Nivel 3"></a>
+    </div>
+    <div id="niveles45">
+        <a href="./lvl4/nivel.html" class="btn-nivel" data-nivel="4"><img src="img/boton/nivel4.svg" alt="Nivel 4"></a>
+        <a href="./lvl5/nivel.html" class="btn-nivel" data-nivel="5"><img src="img/boton/nivel5.svg" alt="Nivel 5"></a>
+    </div>
+
+    <div id="botonRegresar">
+        <a href="index.html"><img alt="Regresar" src="img/boton/botonMenu.svg"></a>
+    </div>
+
+    <div class="ventana-contrasena">
+        <div class="contrasena-caja">
+            <p class="contrasena-titulo">Nivel bloqueado</p>
+            <p>Escribe el nombre del ultimo ingrediente obtenido para ingresar:</p>
+            <input type="text" id="input-contrasena" autocomplete="off">
+            <p class="contrasena-mensaje"></p>
+            <button type="button" onclick="RevisarContrasena()">Entrar</button>
+            <button type="button" onclick="CerrarContrasena()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="js/contrasenasJuegos.js"></script>
+</body>
+
+</html>
